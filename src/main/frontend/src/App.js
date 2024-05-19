@@ -1,13 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
+import main from "./view/main/main";
 
 function App() {
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
   useEffect(() => {
-    axios.get('https://codingapple1.github.io/shop/data2.json')
+    axios.get('https://codingapple1.github.io/shop/data3.json')
         .then(response => {
             let data = response.data;
             setProducts(data);
@@ -27,9 +24,11 @@ function App() {
     if (error) {
         return <div>Error: {error.message}</div>;
     }
+    console.log('products = ', products)
   return (
       <div className="App">
           <h1>Product List</h1>
+          <main />
           <ul>
               {products.map((product, index) => (
                   <li key={index}>
